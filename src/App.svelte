@@ -1,10 +1,9 @@
 <script>
     export let name;
-    // export let fruits;
+    import Fruits from './Fruits.svelte';
     let fruits = ['Apple', 'Banana', 'Cherry', 'Orange', 'Mango'];
     let toggle = false;
     function deleteFruits() {
-        console.log("몇번 렌더링?")
         fruits = fruits.slice(1);
     }
     // const deleteFruits = () => { 	console.log("몇번 렌더링?")     fruits =
@@ -17,9 +16,10 @@
 	function submit() {
 		text = 'SUCCESS';
 	}
+    let bindText = '';
 </script>
 
-<!-- Toggle practice -->
+<!-- toggle practice -->
 <main>
     {#if toggle}
         <h1>Hello
@@ -30,7 +30,7 @@
     <button on:click={() => {toggle = !toggle} }>Toggle</button>
 </main>
 
-<!-- Slice practice -->
+<!-- slice practice -->
 <main>
     <h1>{name}</h1>
     <ul>
@@ -61,6 +61,10 @@
 </div>
 
 <!-- component practice -->
+<Fruits {fruits} {bindText}/>
+<Fruits {fruits} reverse {bindText}/>
+<Fruits {fruits} {bindText} slice='2'/>
+<Fruits {fruits} {bindText} slice='0,1'/>
 
 <style>
     .box {
