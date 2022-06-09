@@ -17,6 +17,11 @@
 		text = 'SUCCESS';
 	}
     let bindText = '';
+    
+    import Parent from './Parent.svelte';
+    import {childValue} from './store';
+    let updateValue = 'UPDATE VALUE';
+    $childValue = updateValue;
 </script>
 
 <!-- toggle practice -->
@@ -65,6 +70,12 @@
 <Fruits {fruits} reverse {bindText}/>
 <Fruits {fruits} {bindText} slice='2'/>
 <Fruits {fruits} {bindText} slice='0,1'/>
+
+<!-- store practice -->
+<div>
+    <Parent />
+    <div>WHAT IS THIS? {$childValue}</div>
+</div>
 
 <style>
     .box {
